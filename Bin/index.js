@@ -9,11 +9,13 @@ function createTodo() {
   input({ message: "Enter the title: " }).then(function (title) {
     todo.title = title;
 
+
     input({ message: "Enter the description: " }).then(function (description) {
       todo.description = description;
 
       input({ message: "Enter the SubTask: " }).then(function (subtask) {
         todo.subtask = subtask;
+        //if()
         //criar uma question para introduzir varias subtasks, 
         //e perguntar se se quer criar nova ou sair 
 
@@ -36,7 +38,29 @@ function createTodo() {
         }).then(function (priority) {
           todo.priority = priority;
 
-          input({ message: "Enter the Status: " }).then(function (status) {
+          // input({ message: "Enter the Status: " }).then(function (status) {
+          //   todo.status = status;
+          select({
+            message: "Select Status ",
+            choices: [
+              {
+                name: "0%",
+                value: "1",
+              },
+              {
+                name: "25%",
+                value: "2",
+              },
+              {
+                name: "50%",
+                value: "3",
+              },
+              {
+                name: "100%",
+                value: "4",
+              }
+            ],
+          }).then(function (status) {
             todo.status = status;
 
             // Add the new todo to the db file
