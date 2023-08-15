@@ -24,7 +24,7 @@ function createTodo() {
         //if()
         //criar uma question para introduzir varias subtasks,
         //e perguntar se se quer criar nova ou sair
-
+          // dfgdfgdfgdfgdfg
         select({
           message: "Select a priority",
           choices: [
