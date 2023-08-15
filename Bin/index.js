@@ -7,36 +7,53 @@ function createTodo() {
   input({ message: "Enter the title: " }).then(function (title) {
     todo.title = title;
 
+    const dataTodo = new Date();
+    const dataCriacaoTodo = new Date(dataTodo);
+    todo.dataTodo = dataTodo;
+    console.log(`Lista criada em ${dataTodo}`);
+
     input({ message: "Enter the description: " }).then(function (description) {
       todo.description = description;
 
       input({ message: "Enter the SubTask: " }).then(function (subtask) {
         todo.subtask = subtask;
         //if()
-        //criar uma question para introduzir varias subtasks, 
-        //e perguntar se se quer criar nova ou sair 
+        //criar uma question para introduzir varias subtasks,
+        //e perguntar se se quer criar nova ou sair
 
         select({
           message: "Select a priority",
           choices: [
             {
               name: "Low",
-              value: "1",
+              value: "Low",
             },
             {
               name: "Medium",
-              value: "2",
+              value: "Medium",
             },
             {
               name: "High",
-              value: "3",
+              value: "High",
             },
           ],
         }).then(function (priority) {
           todo.priority = priority;
 
-          // input({ message: "Enter the Status: " }).then(function (status) {
-          //   todo.status = status;
+          // const dataMax = new Date();
+          const dataMaxEntrega = new Date();
+
+          if (priority === "Low") {
+            dataMaxEntrega.setDate(dataMaxEntrega.getDate() + 10);
+          } else if (priority === "Medium") {
+            dataMaxEntrega.setDate(dataMaxEntrega.getDate() + 20);
+          } else if (priority === "High") {
+            dataMaxEntrega.setDate(dataMaxEntrega.getDate() + 30);
+          }
+
+          todo.dataMaxEntrega = dataMaxEntrega;
+          console.log(`Data maxima para conclusão ${dataMaxEntrega}`);
+
           select({
             message: "Select Status ",
             choices: [
@@ -55,7 +72,7 @@ function createTodo() {
               {
                 name: "100%",
                 value: "4",
-              }
+              },
             ],
           }).then(function (status) {
             todo.status = status;
@@ -76,11 +93,13 @@ function createTodo() {
 function printTodos(list) {
   list.forEach(function (todo) {
     console.log("\n===============");
+    console.log(`Lista criada em ${todo.dataTodo}`);
     console.log(todo.title);
     console.log(todo.description);
     console.log(todo.priority);
     console.log(todo.subtask);
     console.log(todo.status);
+    console.log(`Data conclusão: ${todo.dataMax}`);
     console.log("===============\n");
   });
 }
