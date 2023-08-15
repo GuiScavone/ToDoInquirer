@@ -1,14 +1,11 @@
 const { input, rawlist, select } = require("@inquirer/prompts");
-
 const todos = [];
-
 function createTodo() {
   const todo = {};
 
   console.log("\n\nCreating a todo...");
   input({ message: "Enter the title: " }).then(function (title) {
     todo.title = title;
-
 
     input({ message: "Enter the description: " }).then(function (description) {
       todo.description = description;
