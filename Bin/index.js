@@ -19,12 +19,6 @@ function createTodo() {
     input({ message: "Enter the description: " }).then(function (description) {
       todo.description = description;
 
-      input({ message: "Enter the SubTask: " }).then(function (subtask) {
-        todo.subtask = subtask;
-        //if()
-        //criar uma question para introduzir varias subtasks,
-        //e perguntar se se quer criar nova ou sair
-
         select({
           message: "Select a priority",
           choices: [
@@ -91,8 +85,8 @@ function createTodo() {
         });
       });
     });
-  });
-}
+  }
+
 
 function printTodos(list) {
   list.forEach(function (todo) {
@@ -102,9 +96,8 @@ function printTodos(list) {
     console.log(todo.title);
     console.log(todo.description);
     console.log(todo.priority);
-    console.log(todo.subtask);
     console.log(todo.status);
-    console.log(`Data conclusão: ${todo.dataMax}`);
+    console.log(`Data conclusão: ${todo.dataMaxEntrega}`);
     console.log("===============\n");
   });
 }
